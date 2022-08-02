@@ -1,1 +1,1 @@
-//iniciando pj
+docker create -it --name 01container alpine:3.12
