@@ -6,7 +6,7 @@
 Neste projeto foi realizado:
 
 1. **_Conteinerização_** aplicações;
-2. Criado uma conexão entre elas;
+2. Criação de uma conexão entre elas;
 3. Orquestração de seu funcionamento.
 
 
