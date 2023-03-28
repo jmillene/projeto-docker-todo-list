@@ -1,7 +1,7 @@
 # Boas-vindas ao repositório do projeto Docker Todo List!
 
 <details>
-  <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary><br />
+  <summary><strong>👨‍💻 O que foi desenvolvido</strong></summary><br />
 
 Neste projeto foi realizado:
 
