@@ -10,7 +10,86 @@ Neste projeto foi realizado:
 3. Orquestração de seu funcionamento.
 
 Temos uma aplicação full-stack neste repositório: um aplicativo de tarefas! Esta aplicação precisa ser conteinerizada para funcionar. Você deverá desenvolver os arquivos de configuração para cada frente específica: Front-end, Back-end e, no nosso caso, para um aplicativo de teste que valida se as aplicações estão se comunicando.
+--
 
+Você deverá criar as imagens para as aplicações e configurar essas imagens com o `docker-compose`.
+
+Para isto, você irá utilizar uma série de comandos do `docker` com diferentes níveis de complexidade.
+
+Cada comando deverá ser escrito em seu próprio arquivo.
+
+Para isto, siga os seguintes passos:
+
+1. Leia o requisito e crie um arquivo chamado `commandN.dc` no diretório `docker-commands`, onde `N` é o número do requisito. Por exemplo:
+
+    ```text
+    Requisito 1: ./docker/docker-commands/command01.dc
+    Requisito 2: ./docker/docker-commands/command02.dc
+    Requisito 3: ./docker/docker-commands/command03.dc
+    ```
+    **⚠️ É muito importante que os seus arquivos tenham exatamente estes nomes! ⚠️**
+
+
+2. Escreva neste arquivo o comando do CLI *(Interface de Linha de Comando)* do Docker que resolve o requisito. Um exemplo de como vai ficar seu arquivo:
+
+    ```dc
+    docker network inspect bridge
+    ```
+
+---
+
+Os arquivos principais do projeto estão na pasta `docker`, na raiz do projeto. Nela estão contidos:
+
+1. Pasta `docker-commands`: onde ficarão os comandos exigidos pelos requisitos;
+   - **⚠️ Importante: você deve assumir que essa é a pasta raiz para os comandos.**
+   - Por exemplo, se você precisa referenciar um caminho em um comando, você deve assumir que sua pasta raiz esta partindo de `./docker`.
+2. Pasta `todo-app`: onde fica a nossa **pseudo-aplicação**, que servirá como base para nossos `Dockerfile`s e `Compose`;
+   - **⚠️ Essa aplicação conta com um [**README.md**](./docker/todo-app/README.md) próprio, que pode ser usado como referência na criação dos `dockerfiles` e do `docker-compose.yml`!**
+
+Quando for necessário fazer a orquestração das aplicações, o arquivo `docker-compose.yml` deverá ser criado na pasta `./docker`. conforme o arquivo de exemplo [`docker/docker-compose.yml.example`](docker/docker-compose.yml.example).
+
+</details>
+
+# Orientações
+
+<details>
+  <summary><strong>📋︎ Sobre o avaliador</strong></summary><br />
+
+**⚠️ Importante: ⚠️**
+
+```text
+Para que o avaliador funcione corretamente é importante que a instalação do 
+Docker (vista no dia 1) seja feita corretamente.
+
+Aqui também é importante que o seu usuário esteja no grupo `docker` (para que 
+não haja a necessidade de rodar comandos utilizando o `sudo`)
+```
+
+O avaliador cria um **container especial** para executar a avaliação de `comandos`, `Dockerfiles` e `docker-compose`.
+
+Esse container é temporário, portanto, ao começar ou terminar os testes locais, o avaliador remove automaticamente esse mesmo container, assim como seu volume associado.
+
+O volume desse container mapeia a pasta `./docker/` do seu projeto, para dentro dele, ou seja, a raiz desse container vai conter as pastas `./docker-commands/`, `./todo-app/` e seu arquivo `./docker-compose.yml` quando estiver pronto.
+
+Isso significa que, se pudéssemos olhar para dentro do container de avaliação, veríamos a seguinte estrutura:
+
+```bash
+.
+├── docker-commands
+└── todo-app
+    ├── back-end
+    │   └── *
+    ├── front-end
+    │   └── *
+    └── tests
+        └── *
+```
+
+Portanto, é importante entender que os comandos docker escritos em `command*.dc` estarão rodando dentro desse container especial (e não a partir da raiz do projeto, como em projetos anteriores).
+
+Obs.: Caso o seu projeto esteja localizado em um diretório que contenha espaço no nome, os testes falharão (Exemplo: Projetos Trybe). Nesse caso basta mover o projeto de pasta ou renomeá-lo (Exemplo: Projetos-Trybe ou ProjetosTrybe). Isso acontece porque o comando docker usado nos testes irá entender que o espaço no nome significa que está passando algum tipo de opção ou complemento extra.
+
+</details>
 
 # Requisitos obrigatórios do projeto
 
