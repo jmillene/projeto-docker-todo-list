@@ -9,6 +9,8 @@ Neste projeto foi realizado:
 2. Criação de uma conexão entre elas;
 3. Orquestração de seu funcionamento.
 
+Temos uma aplicação full-stack neste repositório: um aplicativo de tarefas! Esta aplicação precisa ser conteinerizada para funcionar. Você deverá desenvolver os arquivos de configuração para cada frente específica: Front-end, Back-end e, no nosso caso, para um aplicativo de teste que valida se as aplicações estão se comunicando.
+
 
 # Requisitos obrigatórios do projeto
 
