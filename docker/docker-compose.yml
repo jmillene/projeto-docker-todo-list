@@ -1,0 +1,21 @@
+version: '3'
+services:
+  todotests:
+    image: todotests
+    depends_on:
+      - todobackend
+      - todofront
+    environment:
+      - FRONT_HOST=todofront
+  todofront:
+    build: /home/jessica/Desktop/sd-021-a-project-docker-todo-list/docker/todo-app/front-end
+    ports:
+      - 3000:3000
+    depends_on:
+      - todobackend
+    environment:
+      - REACT_APP_API_HOST=todobackend
+  todobackend:
+    build: /home/jessica/Desktop/sd-021-a-project-docker-todo-list/docker/todo-app/back-end
+    ports:
+      - 3001:3001
